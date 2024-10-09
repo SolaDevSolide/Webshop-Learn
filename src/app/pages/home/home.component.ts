@@ -74,11 +74,16 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         this.products$ = combineLatest([
             this.countSubject,
-            this.sortSubject
+            this.sortSubject,
+            this.categorySubject
         ])
             .pipe(
-                switchMap(([count, sort]) => {
-                    return this.storeService.getAllProducts(count, sort);
+                switchMap(([count, sort, category]) => {
+                    if (category === 'All' || !category) {
+                        return this.storeService.getAllProducts(count, sort);
+                    } else {
+                        return this.storeService.getProductsByCategory(category, count, sort);
+                    }
                 })
             );
     }
@@ -97,7 +102,7 @@ export class HomeComponent implements OnInit {
     }
 
     onShowCategory(newCategory: string): void {
-        this.category = newCategory;
+        this.categorySubject.next(newCategory);
     }
 
     onAddToCart(product: Product): void {

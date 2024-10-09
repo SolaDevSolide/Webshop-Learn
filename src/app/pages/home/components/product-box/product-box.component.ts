@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatCard} from "@angular/material/card";
 import {CurrencyPipe, NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatIconButton} from "@angular/material/button";
@@ -17,7 +17,6 @@ import {Product} from "../../../../models/product.model";
         NgClass,
         NgIf
     ],
-    changeDetection: ChangeDetectionStrategy.Default,
     template: `
         <mat-card [ngClass]="{'text-center': !fullWidthMode}">
             <div [ngClass]="{'flex': fullWidthMode}" class="ml-">

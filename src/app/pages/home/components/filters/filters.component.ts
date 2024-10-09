@@ -26,8 +26,12 @@ import {StoreService} from "../../../../service/store.service";
                 <mat-panel-title> CATEGORIES</mat-panel-title>
             </mat-expansion-panel-header>
             <mat-selection-list [multiple]="false">
-                <mat-list-option *ngFor="let category of categories" [value]="category">
-                    <button (click)="onShowCategory(category)" mat-button>{{ category }}</button>
+                <mat-list-option (click)="onShowCategory('all')">
+                    All
+                </mat-list-option>
+                <mat-list-option *ngFor="let category of categories" [value]="category"
+                                 (click)="onShowCategory(category)">
+                    {{ category }}
                 </mat-list-option>
             </mat-selection-list>
         </mat-expansion-panel>
