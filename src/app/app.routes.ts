@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 import {HomeComponent} from "./pages/home/home.component";
 import {CartComponent} from "./pages/cart/cart.component";
 import {CartService} from "./service/cart.service";
+import {StoreService} from "./service/store.service";
 
 export const routes: Routes = [
     {
@@ -14,5 +15,8 @@ export const routes: Routes = [
     },
     {
         path: "", redirectTo: "home", pathMatch: "full",
-        providers: [CartService]
+        providers: [
+            CartService,
+            StoreService
+        ]
     }];

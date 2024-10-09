@@ -60,15 +60,20 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 })
 export class ProductsHeaderComponent {
     @Output() columnsCountChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output() itemsCountChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output() sortChange: EventEmitter<string> = new EventEmitter<string>();
+
     sort: string = "desc";
     itemsShowCount: number = 12;
 
     onSortUpdated(newSort: string): void {
         this.sort = newSort;
+        this.sortChange.emit(this.sort);
     }
 
     onItemsUpdated(count: number): void {
         this.itemsShowCount = count;
+        this.itemsCountChange.emit(this.itemsShowCount);
     }
 
     onColumnsUpdated(colsNumbers: number): void {
